@@ -41,6 +41,7 @@ class MessageSchema(Schema):
             severity = alert['labels']['severity']
             runbook_url = alert['annotations'].get('runbook_url', '')
             fingerprint = alert.get('fingerprint', '')
+            startsAt = alert['startsAt]
             extra_labels = dict()
             extra_annotations = dict()
 
@@ -58,7 +59,7 @@ class MessageSchema(Schema):
                 if key not in excluded_annotations and annotation_is_not_dict:
                     extra_annotations[key] = annotation
 
-            alert = PrometheusAlert(name, status, severity, summary, instance, description, fingerprint, runbook_url, extra_labels, extra_annotations)
+            alert = PrometheusAlert(name, status, severity, summary, instance, description, fingerprint, runbook_url, startsAt, extra_labels, extra_annotations)
             prom_alerts.append(alert)
         return prom_alerts
 
