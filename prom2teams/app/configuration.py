@@ -33,6 +33,7 @@ def _update_application_configuration(application, configuration):
         application.config['MICROSOFT_TEAMS'] = configuration['Microsoft Teams']
     if 'Microsoft Teams Client' in configuration:
         application.config['TEAMS_CLIENT_CONFIG'] = {
+            'TIMEOUT': configuration.getint('Microsoft Teams Client', 'RequestTimeout'),
             'RETRY_ENABLE': configuration.getboolean('Microsoft Teams Client', 'RetryEnable'),
             'RETRY_WAIT_TIME': configuration.getint('Microsoft Teams Client', 'RetryWaitTime'),
             'MAX_PAYLOAD': configuration.getint('Microsoft Teams Client', 'MaxPayload')
@@ -129,9 +130,13 @@ def config_app(application):
             application.config['GROUP_ALERTS_BY'] = command_line_args.groupalertsby
         if command_line_args.enablemetrics or os.environ.get('PROM2TEAMS_PROMETHEUS_METRICS', False):
             os.environ["DEBUG_METRICS"] = "True"
-            from prometheus_flask_exporter import PrometheusMetrics
-            metrics = PrometheusMetrics(application)
-
+            if application.config['ENV'] == "werkzeug":
+                from prometheus_flask_exporter import PrometheusMetrics
+                metrics = PrometheusMetrics(application)
+            else:
+                from prometheus_flask_exporter.multiprocess import UWsgiPrometheusMetrics
+                metrics = UWsgiPrometheusMetrics(application)
+                metrics.start_http_server(int(os.getenv('PROMETHEUS_MULTIPROC_PORT')))
         if 'MICROSOFT_TEAMS' not in application.config:
             raise MissingConnectorConfigKeyException('missing connector key in config')
 

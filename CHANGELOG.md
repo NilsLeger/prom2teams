@@ -3,10 +3,34 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prom2teams/tree/develop)
+## [4.2.1](https://github.com/idealista/prom2teams/tree/4.2.1)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.2.0...4.2.1)
 ### Fixed
+- *[#307](https://github.com/idealista/prom2teams/pull/307) Update prom2teams replace_config with tmp config files* @santi-eidu
+## [4.2.0](https://github.com/idealista/prom2teams/tree/4.2.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.1.0...4.2.0)
+### Added
+- *[#312](https://github.com/idealista/prom2teams/pull/312) Improve error handler to distinguish between different kind of exceptions* @smartinsempere
+## [4.1.0](https://github.com/idealista/prom2teams/tree/4.1.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/4.0.0...4.1.0)
+### Fixed
+- *[#309](https://github.com/idealista/prom2teams/pull/309) Update prom2teams to use flask exporter with uWSGI for metrics when using uWSGI mode* @santi-eidu
+## [4.0.0](https://github.com/idealista/prom2teams/tree/4.0.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.3.0...4.0.0)
+### Fixed
+- *[#301](https://github.com/idealista/prom2teams/pull/301) Update image to use uWSGI* @santi-eidu
+### Added
+- *[#297](https://github.com/idealista/prom2teams/issues/297) Add travis job to upload docker image to Dockerhub* @santi-eidu
+- *[#296](https://github.com/idealista/prom2teams/issues/296) Release 3.3.0 missing on Docker Hub* @santi-eidu
+
+## [3.3.0](https://github.com/idealista/prom2teams/tree/3.3.0)
+[Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.3...3.3.0)
+### Fixed
+- *[#290](https://github.com/idealista/prom2teams/pull/290) Fixed .travis.yml config file and added to requirements.txt some missing dependencies.* @ommarmol
 - *[#279](https://github.com/idealista/prom2teams/pull/279) Fixed issue with MS Teams exception handling* @nryabkov
 ### Added
 - *[#281](https://github.com/idealista/prom2teams/pull/281) Allow to add arbitrary envvars to deployment* @dkobras
+- *[#292](https://github.com/idealista/prom2teams/issues/292) Configurable timeout for the request* @blalop
 
 ## [3.2.3](https://github.com/idealista/prom2teams/tree/3.2.3)
 [Full Changelog](https://github.com/idealista/prom2teams/compare/3.2.2...3.2.3)
